@@ -4,6 +4,8 @@ Example Project for GoGM
 ## Description
 This is based on the loosely Java example for the Java OGM in the [neo4j documentation](https://neo4j.com/docs/ogm-manual/current/tutorial/).
 
+GoGM library can be found [here](https://github.com/mindstand/gogm)
+
 ## Files
 - `docker-compose.yaml` - deploys single node neo4j "cluster"
 - `docker-compose-casual-cluster.yaml` - deploys 3 core and 1 replica node cluster
