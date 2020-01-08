@@ -2,7 +2,7 @@
 Example Project for GoGM
 
 ## Description
-This is based on the loosely Java example for the Java OGM in the [neo4j documentation](https://neo4j.com/docs/ogm-manual/current/tutorial/).
+This is loosely based on Java example by Neo4j for the Java OGM. This can be found [here](https://neo4j.com/docs/ogm-manual/current/tutorial/).
 
 GoGM library can be found [here](https://github.com/mindstand/gogm)
 
