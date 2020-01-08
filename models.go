@@ -14,7 +14,7 @@ type Department struct {
 	Name string `gogm:"name=name"`
 
 	Subjects []*Subject `gogm:"direction=outgoing;relationship=CURRICULUM"`
-	Teachers []*Teacher  `gogm:"direction=incoming;relationship=FOR_DEPARTMENT"`
+	Teachers []*Teacher `gogm:"direction=incoming;relationship=FOR_DEPARTMENT"`
 }
 
 type Subject struct {
@@ -23,8 +23,8 @@ type Subject struct {
 	Name string `gogm:"name=name"`
 
 	Department *Department `gogm:"direction=incoming;relationship=CURRICULUM"`
-	Teachers []*Teacher `gogm:"direction=outgoing;relationship=TAUGHT_BY"`
-	Courses []*Course `gogm:"direction=incoming;relationship=SUBJECT_TAUGHT"`
+	Teachers   []*Teacher  `gogm:"direction=outgoing;relationship=TAUGHT_BY"`
+	Courses    []*Course   `gogm:"direction=incoming;relationship=SUBJECT_TAUGHT"`
 }
 
 type Teacher struct {
@@ -32,8 +32,8 @@ type Teacher struct {
 
 	Name string `gogm:"name=name;unique"`
 
-	Courses []*Course `gogm:"direction=outgoing;relationship=TEACHES_CLASS"`
-	Subjects []*Subject `gogm:"direction=incoming;relationship=TAUGHT_BY"`
+	Courses    []*Course   `gogm:"direction=outgoing;relationship=TEACHES_CLASS"`
+	Subjects   []*Subject  `gogm:"direction=incoming;relationship=TAUGHT_BY"`
 	Department *Department `gogm:"direction=outgoing;relationship=FOR_DEPARTMENT"`
 }
 
@@ -42,8 +42,8 @@ type Course struct {
 
 	Name string `gogm:"name=name"`
 
-	Subject *Subject `gogm:"direction=outgoing;relationship=SUBJECT_TAUGHT"`
-	Teacher *Teacher `gogm:"direction=incoming;relationship=TEACHES_CLASS"`
+	Subject     *Subject      `gogm:"direction=outgoing;relationship=SUBJECT_TAUGHT"`
+	Teacher     *Teacher      `gogm:"direction=incoming;relationship=TEACHES_CLASS"`
 	Enrollments []*Enrollment `gogm:"direction=incoming;relationship=ENROLLED"`
 }
 
@@ -60,7 +60,7 @@ type Enrollment struct {
 	gogm.BaseNode
 
 	Start *Student
-	End *Course
+	End   *Course
 
 	EnrolledDate time.Time `gogm:"name=enrolled_date;time"`
 }

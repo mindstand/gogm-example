@@ -6,11 +6,11 @@ import (
 	"time"
 )
 
-func main()  {
+func main() {
 	conf := gogm.Config{
-		Host:          "0.0.0.0",
-		Port:          7687,
-		IsCluster:     false,
+		Host:      "0.0.0.0",
+		Port:      7687,
+		IsCluster: false,
 		// IsCluster: true, // if we're trying to connect to a casual cluster
 		Username:      "neo4j",
 		Password:      "password",
@@ -25,19 +25,19 @@ func main()  {
 	}
 
 	// create some teachers
-	crosby, shully, elias, oates := &Teacher{Name: "Crosby"}, &Teacher{Name:"Shully"}, &Teacher{Name:"Elias"}, &Teacher{Name:"Oates"}
+	crosby, shully, elias, oates := &Teacher{Name: "Crosby"}, &Teacher{Name: "Shully"}, &Teacher{Name: "Elias"}, &Teacher{Name: "Oates"}
 
 	// create some departments
-	compsci, history, physics := &Department{Name:"Compsci"}, &Department{Name:"History"}, &Department{Name: "Physics"}
+	compsci, history, physics := &Department{Name: "Compsci"}, &Department{Name: "History"}, &Department{Name: "Physics"}
 
 	// create some subjects
-	dataStructures, modernHistory, hardPhysics := &Subject{Name:"dataStructures"}, &Subject{Name:"modernHistory"}, &Subject{Name:"hardPhysics"}
+	dataStructures, modernHistory, hardPhysics := &Subject{Name: "dataStructures"}, &Subject{Name: "modernHistory"}, &Subject{Name: "hardPhysics"}
 
 	// create some courses
-	cs341_0, cs341_1, hist347, phys122 := &Course{Name:"cs341_0"}, &Course{Name:"cs341_1"}, &Course{Name:"hist347"}, &Course{Name:"phys122"}
+	cs341_0, cs341_1, hist347, phys122 := &Course{Name: "cs341_0"}, &Course{Name: "cs341_1"}, &Course{Name: "hist347"}, &Course{Name: "phys122"}
 
 	// create a few students
-	eric, steven, michael, nikita := &Student{Name:"eric"}, &Student{Name:"steven"}, &Student{Name:"michael"}, &Student{Name:"nikita"}
+	eric, steven, michael, nikita := &Student{Name: "eric"}, &Student{Name: "steven"}, &Student{Name: "michael"}, &Student{Name: "nikita"}
 
 	// lets assign the teacher to their departments using our generated functions
 	// ignoring the errors here for demo purposes
@@ -104,19 +104,19 @@ func main()  {
 	// now we have all of the teachers, classes, departments and subjects saved.
 	// lets assign students to their classes
 
-	eric.LinkToCourseOnFieldEnrollments(cs341_0, &Enrollment{EnrolledDate:time.Now().UTC()})
-	eric.LinkToCourseOnFieldEnrollments(hist347, &Enrollment{EnrolledDate:time.Now().UTC()})
-	eric.LinkToCourseOnFieldEnrollments(phys122, &Enrollment{EnrolledDate:time.Now().UTC()})
+	eric.LinkToCourseOnFieldEnrollments(cs341_0, &Enrollment{EnrolledDate: time.Now().UTC()})
+	eric.LinkToCourseOnFieldEnrollments(hist347, &Enrollment{EnrolledDate: time.Now().UTC()})
+	eric.LinkToCourseOnFieldEnrollments(phys122, &Enrollment{EnrolledDate: time.Now().UTC()})
 
-	nikita.LinkToCourseOnFieldEnrollments(cs341_1, &Enrollment{EnrolledDate:time.Now().UTC()})
-	nikita.LinkToCourseOnFieldEnrollments(phys122, &Enrollment{EnrolledDate:time.Now().UTC()})
-	nikita.LinkToCourseOnFieldEnrollments(hist347, &Enrollment{EnrolledDate:time.Now().UTC()})
+	nikita.LinkToCourseOnFieldEnrollments(cs341_1, &Enrollment{EnrolledDate: time.Now().UTC()})
+	nikita.LinkToCourseOnFieldEnrollments(phys122, &Enrollment{EnrolledDate: time.Now().UTC()})
+	nikita.LinkToCourseOnFieldEnrollments(hist347, &Enrollment{EnrolledDate: time.Now().UTC()})
 
-	steven.LinkToCourseOnFieldEnrollments(cs341_0, &Enrollment{EnrolledDate:time.Now().UTC()})
-	steven.LinkToCourseOnFieldEnrollments(hist347, &Enrollment{EnrolledDate:time.Now().UTC()})
+	steven.LinkToCourseOnFieldEnrollments(cs341_0, &Enrollment{EnrolledDate: time.Now().UTC()})
+	steven.LinkToCourseOnFieldEnrollments(hist347, &Enrollment{EnrolledDate: time.Now().UTC()})
 
-	michael.LinkToCourseOnFieldEnrollments(phys122, &Enrollment{EnrolledDate:time.Now().UTC()})
-	michael.LinkToCourseOnFieldEnrollments(hist347, &Enrollment{EnrolledDate:time.Now().UTC()})
+	michael.LinkToCourseOnFieldEnrollments(phys122, &Enrollment{EnrolledDate: time.Now().UTC()})
+	michael.LinkToCourseOnFieldEnrollments(hist347, &Enrollment{EnrolledDate: time.Now().UTC()})
 
 	// now to save these assignments
 	err = sess.Begin()
