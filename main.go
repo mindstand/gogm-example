@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	conf := gogm.Config{
+	conf := &gogm.Config{
 		Host:      "0.0.0.0",
 		Port:      7687,
 		IsCluster: false,
@@ -19,7 +19,7 @@ func main() {
 	}
 
 	// must register each node, including edges in gogm.Init(). Also note you must pass the pointer
-	err := gogm.Init(&conf, &Department{}, &Subject{}, &Teacher{}, &Course{}, &Student{}, &Enrollment{})
+	err := gogm.Init(conf, &Department{}, &Subject{}, &Teacher{}, &Course{}, &Student{}, &Enrollment{})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -199,6 +199,12 @@ func main() {
 	if err != nil {
 		log.Fatal(sess.RollbackWithError(err))
 	}
+
+	// we can also delete by uuid
+	//err = sess.DeleteUUID(steven.UUID)
+	//if err != nil {
+	//	log.Fatal(sess.RollbackWithError(err))
+	//}
 
 	err = sess.Commit()
 	if err != nil {

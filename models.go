@@ -50,7 +50,8 @@ type Course struct {
 type Student struct {
 	gogm.BaseNode
 
-	Name string `gogm:"name=name;unique"`
+	Name   string                 `gogm:"name=name;unique"`
+	Grades map[string]interface{} `gogm:"name=grades;properties"`
 
 	Enrollments []*Enrollment `gogm:"direction=outgoing;relationship=ENROLLED"`
 }
@@ -74,12 +75,12 @@ func (e *Enrollment) GetStartNodeType() reflect.Type {
 }
 
 func (e *Enrollment) SetStartNode(v interface{}) error {
-	stud, ok := v.(*Student)
+	student, ok := v.(*Student)
 	if !ok {
 		return fmt.Errorf("unable to convert to [*Student] from [%T]", v)
 	}
 
-	e.Start = stud
+	e.Start = student
 	return nil
 }
 
